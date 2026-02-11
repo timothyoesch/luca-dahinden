@@ -1,0 +1,7 @@
+.ld-section {
+    @apply my-16 md:my-28 lg:my-40;
+}
+
+.ld-container {
+    @apply mx-auto max-w-[860px] px-4 md:px-12;
+}

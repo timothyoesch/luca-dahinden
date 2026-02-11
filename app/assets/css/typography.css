@@ -1,0 +1,36 @@
+html {
+    font-family: "EB Garamond", serif;
+    font-size: clamp(18px, 1.04vw, 22px);
+
+    body {
+        @apply lg:text-2xl;
+    }
+}
+
+.boxed {
+    --highlight-color: black;
+    --text-color: white;
+    color: var(--text-color);
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-style: italic;
+    text-transform: uppercase;
+    padding: .1em 0;
+    background-color: var(--highlight-color);
+    box-shadow: .2em 0 0 var(--highlight-color), -.2em 0 0 var(--highlight-color);
+    box-decoration-break: clone;
+    line-height: 1.3em;
+    display: inline;
+    hyphens: manual;
+}
+
+.font-inter {
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-style: italic;
+}
+
+p+p {
+    margin-top: 1em;
+}

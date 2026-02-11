@@ -1,0 +1,27 @@
+{
+  "name": "luca-dahinden",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@nuxt/a11y": "^1.0.0-alpha.1",
+    "@nuxt/fonts": "^0.13.0",
+    "@nuxt/icon": "^2.2.1",
+    "@nuxt/image": "^2.0.0",
+    "@nuxtjs/mdc": "^0.20.1",
+    "@nuxtjs/tailwindcss": "^6.14.0",
+    "@vueform/nuxt": "^1.26.0",
+    "nuxt": "^4.3.1",
+    "vue": "^3.5.28",
+    "vue-router": "^4.6.4"
+  },
+  "devDependencies": {
+    "@iconify-json/ic": "^1.2.4"
+  }
+}

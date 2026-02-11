@@ -1,0 +1,6 @@
+@import url("./typography.css");
+@import url("./sections.css");
+
+html {
+    scroll-behavior: smooth;
+}

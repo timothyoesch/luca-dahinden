@@ -1,0 +1,30 @@
+[
+    {
+        "title": "ohne Polizei&shy;gwalt",
+        "content": "Rassismus und Polizeigewalt sind auch in Zürich Realität – EGMR-Verurteilungen zeigen, dass echte Reformen fehlen. Ich setze mich für eine konsequente Nulltoleranz-Politik, starke (interne und externe) Ombudsstellen und ein Verbot von Gummischrot ein.",
+        "fg-color": "#000000",
+        "bg-color": "#F73B3B",
+        "id": "polizei"
+    },
+    {
+        "title": "für Queer- und Trans&shy;rechte",
+        "content": "Queere und insbesondere trans Menschen erleben auch in Zürich noch immer Gewalt und strukturelle Hürden. Ich setze mich für besseren Schutz, zugängliche Beratungs- und Krisenangebote sowie eine Gesundheitsversorgung ein, die trans Personen nicht im Stich lässt.",
+        "fg-color": "#FFFF00",
+        "bg-color": "#6800C4",
+        "id": "queer"
+    },
+    {
+        "title": "die sich alle leisten können",
+        "content": "Steigende Mieten und Krankenkassenprämien bei stagnierenden Löhnen zeigen: Unsere Wirtschaft dient zu oft wenigen statt allen. Ich kämpfe für eine Stadtpolitik, die konsequent gegen diese Auswüchse vorgeht und dafür sorgt, dass sich alle ein Leben in Zürich leisten können.",
+        "fg-color": "#36006B",
+        "bg-color": "#F376A5",
+        "id": "wirtschaft"
+    },
+    {
+        "title": "mit einer auto&shy;freien Innen&shy;stadt",
+        "content": "Zürich braucht Quartierstrassen für Menschen statt für Autos. Ich setze mich für autofreie Zonen und Quartierblöcke ein – mit mehr Platz für Fuss- und Veloverkehr, Freiräume und Lebensqualität, ohne Gewerbe oder mobilitätseingeschränkte Menschen auszuschliessen.",
+        "fg-color": "#8000FF",
+        "bg-color": "#98FF9E",
+        "id": "autofrei"
+    }
+]
