@@ -1,6 +1,8 @@
 <script setup>
 import { ref } from 'vue';
 let form$ = ref();
+let formContainer = ref();
+let successContainer = ref();
 
 const handleSubmit = async (formData, form$) => {
     const data = form$.data
@@ -16,159 +18,168 @@ const handleSubmit = async (formData, form$) => {
                 cancelToken: form$.cancelToken.token,
             }
         )
-        
+
     } catch (error) {
         console.error('error', error)
         return
     } finally {
         form$.submitting = false
-
+        form$.cancelToken = null
+        formContainer.value.classList.add('hidden')
+        successContainer.value.classList.remove('hidden')
     }
 }
 </script>
 
 <template>
-    <div>lorem</div>
-  <Vueform
-    size="md"
-    :display-errors="false"
-    form-key="uuid"
-    add-class="vf-ld-mitmachen"
-    method="POST"
-    :endpoint="handleSubmit"
-    ref="form$"
-  >
-    <TextElement
-      name="fname"
-      label="Vorname"
-      :rules="[
-        'required',
-      ]"
-      autocomplete="given-name"
-      :columns="{
-        sm: {
-          container: 6,
-        },
-      }"
-    />
-    <TextElement
-      name="lname"
-      label="Nachname"
-      autocomplete="family-name"
-      :columns="{
-        sm: {
-          container: 6,
-        },
-      }"
-    />
-    <TextElement
-      name="email"
-      input-type="email"
-      :rules="[
-        'required',
-        'email',
-      ]"
-      label="E-Mail Adresse"
-      autocomplete="email"
-    />
-    <PhoneElement
-      name="phone"
-      label="Telefonnummer"
-      :allow-incomplete="true"
-      :unmask="true"
-      placeholder="optional"
-      default="+41"
-      autocomplete="tel"
-    />
-    <TextElement
-      name="street"
-      label="Adresse"
-      info="Strasse + Nr."
-      placeholder="Optional"
-      autocomplete="street-address"
-      :columns="{
-        sm: {
-          container: 12,
-        },
-        lg: {
-          container: 5,
-        },
-      }"
-    />
-    <TextElement
-      name="zip"
-      label="PLZ"
-      :columns="{
-        default: {
-          container: 6,
-        },
-        lg: {
-          container: 3,
-        },
-        sm: {
-          container: 6,
-        },
-      }"
-      autocomplete="postal-code"
-    />
-    <TextElement
-      name="city"
-      label="Ort"
-      :columns="{
-        default: {
-          container: 6,
-        },
-        sm: {
-          container: 6,
-        },
-        lg: {
-          container: 4,
-        },
-      }"
-      autocomplete="address-level2"
-    />
-    <MultiselectElement
-      name="supportType"
-      :close-on-select="false"
-      :search="true"
-      :native="false"
-      label="Wie möchtest du mich unterstützen?"
-      autocomplete="off"
-      input-type="search"
-      :strict="false"
-      :truncate="false"
-      multiple-label-single="1 Option gewählt"
-      multiple-label-multiple=":x: Optionen gewählt"
-      :items="[
-        {
-          value: 'komitee',
-          label: 'Ich will deinem Komitee beitreten',
-        },
-        {
-          value: 'some',
-          label: 'Schick mir Infos zu deinem Wahlkampf auf den sozialen Medien',
-        },
-        {
-          value: 'postkarte',
-          label: 'Schick mir Postkarten zu',
-        },
-      ]"
-      :hide-selected="false"
-      :rules="[
-        'required',
-        'min:1',
-      ]"
-      description="Wähle hier aus, wie du mich im Wahlkampf unterstützen kannst oder füge selber eine neue Option hinzu!"
-      :create="true"
-    />
-    <ButtonElement
-      name="submit"
-      button-label="Jetzt mitmachen!"
-      :submits="true"
-      align="left"
-      :full="true"
-    />
-  </Vueform>
+    <div class="ld-form-success bg-green-100 px-4 py-1 border-green-600 border hidden" ref="successContainer">
+        <p><b>Danke für deine Unterstützung, {{ form$?.data?.fname ?? ""}}!</b></p>
+        <p class="text-sm mt-1">Danke für dein Engagement für eine queerfeministische Stadt Zürich. Ich melde mich bald bei dir!</p>
+    </div>
+    <div
+        ref="formContainer"
+    >
+        <Vueform
+            size="md"
+            :display-errors="false"
+            form-key="uuid"
+            add-class="vf-ld-mitmachen"
+            method="POST"
+            :endpoint="handleSubmit"
+            ref="form$"
+        >
+            <TextElement
+            name="fname"
+            label="Vorname"
+            :rules="[
+                'required',
+            ]"
+            autocomplete="given-name"
+            :columns="{
+                sm: {
+                container: 6,
+                },
+            }"
+            />
+            <TextElement
+            name="lname"
+            label="Nachname"
+            autocomplete="family-name"
+            :columns="{
+                sm: {
+                container: 6,
+                },
+            }"
+            />
+            <TextElement
+            name="email"
+            input-type="email"
+            :rules="[
+                'required',
+                'email',
+            ]"
+            label="E-Mail Adresse"
+            autocomplete="email"
+            />
+            <PhoneElement
+            name="phone"
+            label="Telefonnummer"
+            :allow-incomplete="true"
+            :unmask="true"
+            placeholder="optional"
+            default="+41"
+            autocomplete="tel"
+            />
+            <TextElement
+            name="street"
+            label="Adresse"
+            info="Strasse + Nr."
+            placeholder="Optional"
+            autocomplete="street-address"
+            :columns="{
+                sm: {
+                container: 12,
+                },
+                lg: {
+                container: 5,
+                },
+            }"
+            />
+            <TextElement
+            name="zip"
+            label="PLZ"
+            :columns="{
+                default: {
+                container: 6,
+                },
+                lg: {
+                container: 3,
+                },
+                sm: {
+                container: 6,
+                },
+            }"
+            autocomplete="postal-code"
+            />
+            <TextElement
+            name="city"
+            label="Ort"
+            :columns="{
+                default: {
+                container: 6,
+                },
+                sm: {
+                container: 6,
+                },
+                lg: {
+                container: 4,
+                },
+            }"
+            autocomplete="address-level2"
+            />
+            <MultiselectElement
+            name="supportType"
+            :close-on-select="false"
+            :search="true"
+            :native="false"
+            label="Wie möchtest du mich unterstützen?"
+            autocomplete="off"
+            input-type="search"
+            :strict="false"
+            :truncate="false"
+            multiple-label-single="1 Option gewählt"
+            multiple-label-multiple=":x: Optionen gewählt"
+            :items="[
+                {
+                value: 'mobinaricht',
+                label: 'Schick mir eine Nachricht, die ich in meinem Umfeld teilen kann',
+                },
+                {
+                value: 'some',
+                label: 'Schick mir Infos zu deinem Wahlkampf auf den sozialen Medien',
+                },
+                {
+                value: 'postkarte',
+                label: 'Schick mir Postkarten zu',
+                },
+            ]"
+            :hide-selected="false"
+            :rules="[
+                'required',
+                'min:1',
+            ]"
+            description="Wähle hier aus, wie du mich im Wahlkampf unterstützen kannst oder füge selber eine neue Option hinzu!"
+            :create="true"
+            />
+            <ButtonElement
+            name="submit"
+            button-label="Jetzt mitmachen!"
+            :submits="true"
+            align="left"
+            :full="true"
+            />
+        </Vueform>
+    </div>
 </template>
 
 <style>
